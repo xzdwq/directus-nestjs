@@ -1,0 +1,14 @@
+.q-field--auto-height .q-field__control, .q-field--auto-height .q-field__native {
+	min-height: $input-height;
+}
+
+.q-select .q-field__input {
+	min-width: 40px !important;
+}
+
+/* CUSTOM */
+
+.custom-min.q-select.q-field--readonly .q-field__control {
+	height: 35px;
+	min-height: 0;
+}

@@ -1,0 +1,18 @@
+{
+	"packages": [
+		"packages/*",
+		"app",
+		"docs",
+		"api",
+		"nest-api"
+	],
+	"version": "9.8.0",
+	"command": {
+		"bootstrap": {
+			"npmClientArgs": [
+				"--no-package-lock",
+				"--legacy-peer-deps"
+			]
+		}
+	}
+}

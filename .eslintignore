@@ -1,0 +1,5 @@
+node_modules
+dist
+templates
+docker
+packages/cli/bin
