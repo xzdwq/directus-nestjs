@@ -16,11 +16,15 @@
     "lib": ["es7"],
     "allowJs": true,
     "paths": {
-      "@src/*": ["src/*"]
+      "@cfg/*": ["configuration/*"],
+      "@src/*": ["src/*"],
+      "@general-types/*": ["general-types/*"]
     }
   },
   "include": [
-    "src/**/*"
+    "src/**/*",
+    "configuration/**/*",
+    "general-types/**/*"
   ],
   "exclude": [
     "node_modules",

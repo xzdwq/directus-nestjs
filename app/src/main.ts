@@ -15,6 +15,7 @@ import { registerLayouts } from './layouts/register';
 import { loadModules } from './modules/register';
 import { router } from './router';
 import './styles/main.scss';
+import './styles/tailwind.css';
 import { registerViews } from './views/register';
 
 import { quasar } from './styles/quasar';

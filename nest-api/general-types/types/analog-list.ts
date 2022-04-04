@@ -1,0 +1,38 @@
+export interface AnalogListType {
+	id: string;
+	delete_active: boolean;
+	save: boolean;
+	order: number;
+	group_name: string;
+	group_value: string;
+	name: string;
+	full_name: string;
+	is_full_name: boolean;
+	primary: boolean;
+	ic: string;
+	add_name: string;
+	suplr: string | any;
+	suplr_list: never[];
+	class_id: string | any;
+	class_list: any;
+	item_type: any;
+	item_type_list: string[];
+	kind: any;
+	kind_list: string[];
+	product_type: string | null;
+	is_kit: boolean;
+	subkind: any;
+	subkind_list: string[];
+	code_type: any;
+	code_type_list: string[];
+	status: any;
+	status_list: string[];
+	uom: any;
+	status_localization: any;
+	status_localization_list: string[];
+	classifier_kit: any;
+	pg_list: never[];
+	suplr_pg_list: never[];
+	weight_characteristic: any;
+	external_certification: boolean;
+}
