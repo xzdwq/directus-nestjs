@@ -1,10 +1,4 @@
-import {
-	ArgumentsHost,
-	Catch,
-	ExceptionFilter,
-	HttpException,
-	HttpStatus,
-} from '@nestjs/common';
+import { ArgumentsHost, Catch, ExceptionFilter, HttpException, HttpStatus } from '@nestjs/common';
 
 import logger from '@src/core/logger';
 import configuration from '@cfg/configuration';
@@ -17,9 +11,7 @@ export class HttpErrorFilter implements ExceptionFilter {
 		const ctx = host.switchToHttp();
 		const request = ctx.getRequest();
 		const response = ctx.getResponse();
-		const status = exception.getStatus
-			? exception.getStatus()
-			: HttpStatus.INTERNAL_SERVER_ERROR;
+		const status = exception.getStatus ? exception.getStatus() : HttpStatus.INTERNAL_SERVER_ERROR;
 
 		const errorResponse = {
 			success: false,
@@ -34,10 +26,7 @@ export class HttpErrorFilter implements ExceptionFilter {
 			message: exception.message,
 		};
 		const user = request.user?.email || config.logger.noauth_user_mask;
-		logger.error(
-			`[${user}] ${request.method} ${request.url} ${status} - ${exception}`,
-			HttpErrorFilter.name,
-		);
+		logger.error(`[${user}] ${request.method} ${request.url} ${status} - ${exception}`, HttpErrorFilter.name);
 
 		response.status(status).json(errorResponse);
 	}

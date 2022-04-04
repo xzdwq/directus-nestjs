@@ -4,9 +4,7 @@ export default (): any => ({
 	mode: MODE,
 	nest_port: +process.env.NEST_PORT,
 	api_global_prefix: 'api',
-	directus_api: process.env.API_URL
-		? process.env.API_URL
-		: 'http://localhost:8080/api',
+	directus_api: process.env.API_URL ? process.env.API_URL : 'http://localhost:8080/api',
 	// Настройки БД
 	db: {
 		pg_mdm: {

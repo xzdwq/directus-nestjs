@@ -27,9 +27,7 @@ async function run() {
 	});
 
 	// Логирование HTTP запросов в зависимости от значения http_resolve_log
-	morgan.token('user', (req: any) =>
-		req.user ? req.user.email : noauth_user_mask,
-	);
+	morgan.token('user', (req: any) => (req.user ? req.user.email : noauth_user_mask));
 	morgan.format('combined', config.get('logger').morgan_format);
 	app.use(
 		morgan('combined', {
