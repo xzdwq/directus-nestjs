@@ -116,7 +116,7 @@
 									outlined
 									color="primary"
 									class="custom-min"
-									:error="[(val) => val && val.length > 0]"
+									:rules="[() => !!item.ic]"
 									:readonly="item.save"
 								/>
 								<!-- SUPLR -->

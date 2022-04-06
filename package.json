@@ -15,6 +15,8 @@
 		"format": "prettier --write \"**/*.{js,ts,vue,md,yaml}\"",
 		"dev": "lerna run dev --stream --parallel",
 		"build": "lerna run build",
+		"build:memory": "cross-env NODE_OPTIONS=--max_old_space_size=4096 lerna run build",
+		"build:memory-unix": "cross-env NODE_OPTIONS=--max-old-space-size=4096 lerna run build",
 		"build:api": "lerna run build --ignore @directus/app",
 		"pack": "node docker/pack",
 		"release": "lerna version --force-publish --exact",

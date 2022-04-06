@@ -1,13 +1,12 @@
 <template>
-	<span class="null">{{ emptyText }}</span>
+	<span class="null">{{ props.emptyText }}</span>
 </template>
 
 <script lang="ts" setup>
 interface Props {
-	emptyText: string;
+	emptyText?: string;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const props = withDefaults(defineProps<Props>(), {
 	emptyText: '--',
 });

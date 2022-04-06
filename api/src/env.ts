@@ -20,6 +20,8 @@ const defaults: Record<string, any> = {
 	PUBLIC_URL: '/',
 	MAX_PAYLOAD_SIZE: '100kb',
 
+	NEST_PORT: 7000,
+
 	DB_EXCLUDE_TABLES: 'spatial_ref_sys,sysdiagrams',
 
 	STORAGE_LOCATIONS: 'local',
@@ -84,6 +86,8 @@ const defaults: Record<string, any> = {
 	RELATIONAL_BATCH_SIZE: 25000,
 
 	EXPORT_BATCH_SIZE: 5000,
+
+	FILE_METADATA_ALLOW_LIST: 'ifd0.Make,ifd0.Model,exif.FNumber,exif.ExposureTime,exif.FocalLength,exif.ISO',
 };
 
 // Allows us to force certain environment variable into a type, instead of relying
@@ -91,6 +95,8 @@ const defaults: Record<string, any> = {
 const typeMap: Record<string, string> = {
 	HOST: 'string',
 	PORT: 'string',
+
+	NEST_PORT: 'string',
 
 	DB_NAME: 'string',
 	DB_USER: 'string',
@@ -100,6 +106,8 @@ const typeMap: Record<string, string> = {
 
 	DB_EXCLUDE_TABLES: 'array',
 	IMPORT_IP_DENY_LIST: 'array',
+
+	FILE_METADATA_ALLOW_LIST: 'array',
 };
 
 let env: Record<string, any> = {

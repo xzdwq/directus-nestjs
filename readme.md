@@ -6,10 +6,22 @@
 ### Установка
 1. Клонируем проект:  
     `git clone <url> -b <branch>`  
-2. Устанавливаем зависимости:  
+2. Устанавливаем зависимости (из корня проекта):  
     `npm i`  
-3. Собираем проект (необходимо т.к. некоторые модули работают только из сборки):  
+3. Собираем проект (из корня проекта, необходимо т.к. некоторые модули работают только из сборки):  
     `npm run build`  
+
+В случае ошибки при сборке вида: `FATAL ERROR: Ineffective mark-compacts near heap limit Allocation failed - JavaScript heap out of memory`:  
+Это значит что Node не хватает выделенной памяти на выполнение процесса.  
+Посмотреть текущую выделенную память можно командой: `node -e 'console.log(v8.getHeapStatistics().heap_size_limit/(1024*1024))'` (Мб).  
+Для решения этой проблемы была создана команда `npm run build:memory` (для Windows) и `build:memory-unix` (для Unix систем), команда выделяет разово на выполнение следующей операции указанную память, чего должно хватить на сборку. В случае нехватки можно увеличить:  
+
+```bush
+NODE_OPTIONS="--max-old-space-size=5120" # Increase to 5 GB
+NODE_OPTIONS="--max-old-space-size=6144" # Increase to 6 GB
+NODE_OPTIONS="--max-old-space-size=7168" # Increase to 7 GB
+NODE_OPTIONS="--max-old-space-size=8192" # Increase to 8 GB
+```
 
 В случае пустой, вновь созданной БД:  
 1. Инициализируем БД:  

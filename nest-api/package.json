@@ -3,6 +3,10 @@
 	"version": "9.8.0",
   "description": "Nest API server for directus",
   "author": "Viktor Zhivodrov",
+	"exports": {
+		".": "./dist/src/main.js",
+		"./package.json": "./package.json"
+	},
   "scripts": {
 		"dev": "cross-env NODE_ENV=development nest start --watch",
     "prebuild": "rimraf dist",

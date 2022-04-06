@@ -89,7 +89,7 @@ export const useNomenclatureStore = defineStore({
 						: productInfo.data.data.name,
 					container_analog_code: productInfo.data.data.product_list_analog[0]
 						? productInfo.data.data.product_list_analog[0].code
-						: productInfo.data.data.productInfo.data.next_code_analog_list,
+						: productInfo.data.data.next_code_analog_list,
 				};
 				this.load = false;
 			}

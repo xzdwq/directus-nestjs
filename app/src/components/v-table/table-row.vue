@@ -36,7 +36,7 @@
 					:style="header.cellWrap ? 'white-space: break-spaces; width: 100%;' : null"
 					v-html="render(item, header) ? render(item, header) : renderRow(item, header)"
 				/>
-				<value-null v-else :empty-text="header.emptyText" />
+				<value-null v-else :empty-text="header.emptyText || null" />
 			</slot>
 		</td>
 

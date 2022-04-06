@@ -47,6 +47,8 @@ RUN \
 USER node
 WORKDIR /directus
 
+RUN echo "update-notifier=false" >> ~/.npmrc
+
 COPY --from=builder --chown=node:node /directus .
 
 RUN \
