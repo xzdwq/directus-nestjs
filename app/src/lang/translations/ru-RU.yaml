@@ -1662,5 +1662,122 @@ panels:
   list:
     name: Список
     description: Фильтр и список полей из коллекции
-pr:
-  orders: Заявки
+# Product Request
+clear_all_filters: Сбросить все фильтры
+qty_rows: Кол-во строк
+actions: Действия
+if_empty_delete: Удалить, если пусто
+apply: Применить
+theme: Тема
+of: из
+expand_all: Развернуть все
+expand: Развернуть
+collapse_all: Свернуть все
+collapse: Свернуть
+selecting: Подобрать
+save_success: Успешно сохранено
+success_update: Данные успешно обновлены
+named: Наименование
+save_error: Ошибка сохранения
+product_request:
+  orders_system: Заявки на создание артикула
+  orders_help_files_collection: Раздел управления заявками
+  active_orders: Активные
+  archive_orders: Архивные
+  registry_orders: Реестр
+  all_unallocated_orders: Нераспределенные заявки
+  my_orders: Мои заявки
+  no_data: Данные отсутствуют
+  no_data_info: Отсутствует информация по заявкам
+  no_data_products_info: Отсутствует информация по составу заявки
+  no_data_nomenclature: Отсутствует информация по номенклатуре
+  order_number: № заявки
+  status: Статус
+  priority: Приоритет
+  order_text: Текст заявки
+  order_initiator: Инициатор
+  order_executor: Исполнитель
+  request_number: Номер запроса
+  departure_date: Дата отправки
+  update_status_date: Дата обновления статуса
+  card_number: № заявки {order_number}
+  product_title: Информация о продуктах
+  object: Объект
+  mdm_object: Объект MDM
+  type: Тип
+  relation_sn: Связанные SN
+  analog_count: Контейнер аналогов имеет записей
+  assign_executor: Назначить исполнителя ({count})
+  change_status: Изменить статус ({count})
+  change_priority: Изменить приоритет ({count})
+  affected_orders: Произведено {count} действий
+  remove: Удалить заявку
+  delete_order_are_you_sure: >-
+    Вы уверены, что хотите удалить заявку? Это действие необратимо.
+  delete_orders_are_you_sure: >-
+    Вы уверены, что хотите удалить выбранные заявки? Это действие необратимо.
+  delete_record_are_you_sure: >-
+    Вы уверены, что хотите удалить запись? Это действие необратимо.
+  qty_products: Кол-во продуктов
+  create_nomenclature: Создание номенклатурной записи
+  edit_nomenclature: Редактирование номенклатуры
+  original_entry: Исходная запись
+  selected_entry: Подобранная запись
+  waiting_filled: Ожидает заполнения
+  analog_waiting_filled: Контейнер аналогов ожидает добавления
+  manufacturers_article: Артикул производителя
+  unit_measurement: Единица измерения
+  product_group: Продуктовая группа
+  file: Файл
+  comment: Комментарий
+  create_container_analogs: Создать новый контейнер аналогов
+  analogs: Аналоги
+  container_analogs: Контейнер аналогов
+  product_type: Вид изделия
+  nomenclature_type: Тип номенклатуры
+  item_type: Вид номенклатуры
+  nomenclature_class: Класс номенклатуры
+  ic: Код реализации
+  oem: OEM
+  add_product_type: Доп. вид изделия
+  name_suplr: Наименование поставщика
+  trademark: Торговая марка
+  nd: Наим. по НД
+  сhange_class: Сменить класс
+  double_check: Дублирующая запись
+  accounting_nomenclature_cards: Учет номенклатурных карточек
+  supplied: Поставляется
+  article: Артикул
+  company: Компания периметра
+  accounting_waiting_filled_not_save: >-
+    Для возможности добавления записей в контейнер номенклатурных карточек необходимо сохранить хотя бы одну запись из контейнера аналогов
+  accounting_waiting_filled: Контейнер номенклатурных карточек ожидает добавления
+  confirm_action: Подтвердите действие
+  element_editing: Редактирование элемента
+  full_name: Полное наименование
+  change_full_name: Введенное ранее наименование, будет заменено на "{name}"
+  set: Комплект
+  model_article_typesize: Модель/Артикул/Типоразмер
+  trademark_nd: Торговая марка/Нормативный документ
+  doc_name: Наименование для документов
+  base_uom: Базовая единица измерения
+  uom_storage_balances: Единица измерения хранения остатков
+  uom_reports: Единица измерения для отчетов
+  localization_status: Статус локализации
+  classifiers: Классификаторы
+  code: Код
+  form_validation_error: Ошибка валидации формы
+  suplr_product_groups: Продуктовые группы поставщика
+  weight_dimensions_special_conditions: Весо-габаритные характеристики и особые условия
+  enter_value: Введите значение
+  inherited_analogs_container: Наследовано от контейнера аналогов
+  mass: Масса
+  length: Длина
+  width: Ширина
+  height: Высота
+  oversized: Негабарит
+  fcl: Полная загрузка контейнера
+  external_certification: Внешняя сертификация
+  empty_list: Список элементов пуст
+  confirm_chancge_all_analog_items: Изменить для всех остальных аналогов на новое значение?
+  saving: Идет сохранение

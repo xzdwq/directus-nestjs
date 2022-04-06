@@ -34,6 +34,16 @@
 						@update:model-value="toggleSelectAll"
 					/>
 				</th>
+
+				<th v-if="showExpandRow" class="select cell" scope="col">
+					<v-icon
+						v-if="showHeaderExpandRow"
+						v-tooltip="currentExpandAllRows ? t('collapse_all') : t('expand_all')"
+						:name="currentExpandAllRows ? 'indeterminate_check_box' : 'add_box'"
+						class="cursor-pointer duration-300 hover:text-[color:var(--primary)]"
+						@click.stop="onExpandAllRows(items)"
+					/>
+				</th>
 			</template>
 
 			<template #item="{ element: header }">
@@ -60,14 +70,13 @@
 						<slot name="header-context-menu" v-bind="{ header }" />
 					</v-menu>
 
-					<div v-else class="content reorder-handle" @click="changeSort(header)">
+					<div v-else class="content reorder-handle relative" @click="changeSort(header)">
 						<span class="name">
 							<span v-if="header.description" v-tooltip="header.description" class="description-dot"></span>
 							<slot :name="`header.${header.value}`" :header="header">
 								{{ header.text }}
 							</slot>
 						</span>
-
 						<v-icon
 							v-if="header.sortable"
 							v-tooltip.top="t(getTooltipForSortIcon(header))"
@@ -99,10 +108,10 @@
 
 <script lang="ts" setup>
 import { useI18n } from 'vue-i18n';
-import { computed, ref, useSlots } from 'vue';
+import { computed, ref, useSlots, watch } from 'vue';
 import { ShowSelect } from '@directus/shared/types';
 import useEventListener from '@/composables/use-event-listener';
-import { Header, Sort } from './types';
+import { Header, Sort, Item } from './types';
 import { throttle, clone } from 'lodash';
 import Draggable from 'vuedraggable';
 import hideDragImage from '@/utils/hide-drag-image';
@@ -122,6 +131,10 @@ interface Props {
 	mustSort?: boolean;
 	hasItemAppendSlot?: boolean;
 	manualSortKey?: string;
+	showExpandRow?: boolean;
+	showHeaderExpandRow?: string;
+	expandRowCount?: number;
+	items?: Item[];
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -134,6 +147,10 @@ const props = withDefaults(defineProps<Props>(), {
 	mustSort: false,
 	hasItemAppendSlot: false,
 	manualSortKey: undefined,
+	showExpandRow: false,
+	showHeaderExpandRow: 'collapsed',
+	expandRowCount: 0,
+	items: () => [],
 });
 
 const emit = defineEmits(['update:sort', 'toggle-select-all', 'update:headers', 'update:reordering']);
@@ -150,6 +167,23 @@ const hasHeaderContextMenuSlot = computed(() => slots['header-context-menu'] !==
 
 useEventListener(window, 'pointermove', throttle(onMouseMove, 40));
 useEventListener(window, 'pointerup', onMouseUp);
+
+const currentExpandAllRows = ref(props.showHeaderExpandRow === 'expanded' ? true : false);
+
+watch(
+	() => props.expandRowCount,
+	() => {
+		let expandCount = 0,
+			collapseCount = 0;
+		props.items.forEach((i) => (i.expanded ? expandCount++ : collapseCount++));
+		if (expandCount === props.items.length) {
+			currentExpandAllRows.value = true;
+		}
+		if (collapseCount === props.items.length) {
+			currentExpandAllRows.value = false;
+		}
+	}
+);
 
 const headersWritable = useSync(props, 'headers', emit);
 
@@ -264,6 +298,11 @@ function toggleManualSort() {
 			desc: false,
 		});
 	}
+}
+
+function onExpandAllRows(items: Array<unknown>): void {
+	items.forEach((i) => (currentExpandAllRows.value ? (i.expanded = false) : (i.expanded = true)));
+	currentExpandAllRows.value = !currentExpandAllRows.value;
 }
 </script>
 

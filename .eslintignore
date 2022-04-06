@@ -3,3 +3,7 @@ dist
 templates
 docker
 packages/cli/bin
+cli.js
+*.spec.ts
+*.e2e-spec.ts
+lib/*

@@ -1,6 +1,6 @@
 <template>
 	<div class="v-table" :class="{ loading, inline, disabled }">
-		<table :summary="internalHeaders.map((header) => header.text).join(', ')">
+		<table :summary="internalHeaders.map((header) => header.text).join(', ')" :class="tableClass">
 			<table-header
 				v-model:headers="internalHeaders"
 				v-model:sort="internalSort"
@@ -14,6 +14,10 @@
 				:must-sort="mustSort"
 				:has-item-append-slot="hasItemAppendSlot"
 				:manual-sort-key="manualSortKey"
+				:items="items"
+				:show-expand-row="showExpandRow"
+				:show-header-expand-row="showHeaderExpandRow"
+				:expand-row-count="expandRowCount"
 				:allow-header-reorder="allowHeaderReorder"
 				@toggle-select-all="onToggleSelectAll"
 			>
@@ -56,32 +60,40 @@
 				@end="onSortChange"
 			>
 				<template #item="{ element }">
-					<table-row
-						:headers="internalHeaders"
-						:item="element"
-						:show-select="!disabled && showSelect"
-						:show-manual-sort="!disabled && showManualSort"
-						:is-selected="getSelectedState(element)"
-						:subdued="loading || reordering"
-						:sorted-manually="internalSort.by === manualSortKey"
-						:has-click-listener="!disabled && clickable"
-						:height="rowHeight"
-						@click="clickable ? $emit('click:row', { item: element, event: $event }) : null"
-						@item-selected="
-							onItemSelected({
-								item: element,
-								value: !getSelectedState(element),
-							})
-						"
-					>
-						<template v-for="header in internalHeaders" #[`item.${header.value}`]>
-							<slot :item="element" :name="`item.${header.value}`" />
-						</template>
+					<div>
+						<table-row
+							:headers="internalHeaders"
+							:item="element"
+							:show-select="!disabled && showSelect"
+							:show-expand-row="!disabled && showExpandRow"
+							:show-manual-sort="!disabled && showManualSort"
+							:is-selected="getSelectedState(element)"
+							:subdued="loading || reordering"
+							:sorted-manually="internalSort.by === manualSortKey"
+							:has-click-listener="!disabled && clickable"
+							:height="rowHeight"
+							@click="clickable ? $emit('click:row', { item: element, event: $event }) : null"
+							@dblclick="clickable ? $emit('dblclick:row', element) : null"
+							@item-selected="
+								onItemSelected({
+									item: element,
+									value: !getSelectedState(element),
+								})
+							"
+							@expanded="oneExpanded"
+						>
+							<template v-for="header in internalHeaders" #[`item.${header.value}`]>
+								<slot :item="element" :name="`item.${header.value}`" />
+							</template>
 
-						<template v-if="hasItemAppendSlot" #item-append>
-							<slot name="item-append" :item="element" />
-						</template>
-					</table-row>
+							<template v-if="hasItemAppendSlot" #item-append>
+								<slot name="item-append" :item="element" />
+							</template>
+						</table-row>
+						<div v-show="element.expanded && hasItemExpandedSlot" class="pl-12">
+							<slot name="item-expanded" :item="element" />
+						</div>
+					</div>
 				</template>
 			</draggable>
 		</table>
@@ -130,6 +142,9 @@ interface Props {
 	inline?: boolean;
 	disabled?: boolean;
 	clickable?: boolean;
+	tableClass?: string;
+	showExpandRow?: boolean;
+	showHeaderExpandRow?: string;
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -152,6 +167,9 @@ const props = withDefaults(defineProps<Props>(), {
 	inline: false,
 	disabled: false,
 	clickable: true,
+	tableClass: '',
+	showExpandRow: false,
+	showHeaderExpandRow: 'collapsed',
 });
 
 const emit = defineEmits([
@@ -162,6 +180,7 @@ const emit = defineEmits([
 	'update:modelValue',
 	'manual-sort',
 	'update:headers',
+	'dblclick:row',
 ]);
 
 const slots = useSlots();
@@ -223,11 +242,13 @@ const reordering = ref<boolean>(false);
 const hasHeaderAppendSlot = computed(() => slots['header-append'] !== undefined);
 const hasHeaderContextMenuSlot = computed(() => slots['header-context-menu'] !== undefined);
 const hasItemAppendSlot = computed(() => slots['item-append'] !== undefined);
+const hasItemExpandedSlot = computed(() => slots['item-expanded'] !== undefined);
 
 const fullColSpan = computed<string>(() => {
 	let length = internalHeaders.value.length + 1; // +1 account for spacer
 	if (props.showSelect !== 'none') length++;
 	if (props.showManualSort) length++;
+	if (props.showExpandRow) length++;
 	if (hasItemAppendSlot.value) length++;
 
 	return `1 / span ${length}`;
@@ -273,6 +294,7 @@ const columnStyle = computed<string>(() => {
 
 		if (props.showSelect !== 'none') gridTemplateColumns = '36px ' + gridTemplateColumns;
 		if (props.showManualSort) gridTemplateColumns = '36px ' + gridTemplateColumns;
+		if (props.showExpandRow) gridTemplateColumns = '36px ' + gridTemplateColumns;
 
 		gridTemplateColumns = gridTemplateColumns + ' 1fr';
 
@@ -345,6 +367,9 @@ function onSortChange(event: EndEvent) {
 
 	emit('manual-sort', { item, to });
 }
+
+const expandRowCount = ref(0);
+const oneExpanded = (expand) => (expand ? expandRowCount.value++ : expandRowCount.value--);
 </script>
 
 <style scoped>

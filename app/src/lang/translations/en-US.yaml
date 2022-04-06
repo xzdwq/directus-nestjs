@@ -1786,5 +1786,122 @@ panels:
   list:
     name: List
     description: Filter and list fields from a collection
-pr:
-  orders: Product request
+# Product Request
+clear_all_filters: Clear all filters
+qty_rows: Qty
+actions: Actions
+if_empty_delete: Delete, if empty
+apply: Apply
+theme: Theme
+of: of
+expand_all: Expand all
+expand: Expand
+collapse_all: Collapse all
+collapse: Collapse
+selecting: Selecting
+save_success: Saved successfully
+success_update: Data updated successfully
+named: Name
+save_error: Save error
+product_request:
+  orders_system: Order to create an article
+  orders_help_files_collection: Order management section
+  active_orders: Active
+  archive_orders: Archive
+  registry_orders: Registry
+  all_unallocated_orders: Unallocated orders
+  my_orders: My orders
+  no_data: No data available
+  no_data_info: There is no information on orders
+  no_data_products_info: There is no information on the order items
+  no_data_nomenclature: There is no information on the nomenclature
+  order_number: Order no.
+  status: Status
+  priority: Priority
+  order_text: Order text
+  order_initiator: Initiator
+  order_executor: Executir
+  request_number: Request number
+  departure_date: Departure date
+  update_status_date: Status update date
+  card_number: Number {order_number}
+  product_title: Product information
+  object: Object
+  mdm_object: MDM odject
+  type: Type
+  relation_sn: Related SN
+  analog_count: Container of analogs has records
+  assign_executor: Assign executor ({count})
+  change_status: Change status ({count})
+  change_priority: Change priority ({count})
+  affected_orders: Actions {count} performed
+  remove: Delete order
+  delete_order_are_you_sure: >-
+    Are you sure you want to delete the order? This action cannot be undone.
+  delete_orders_are_you_sure: >-
+    Are you sure you want to delete the selected orders? This action cannot be undone.
+  delete_record_are_you_sure: >-
+    Are you sure you want to delete the record? This action cannot be undone.
+  qty_products: Qty products
+  create_nomenclature: Creating an nomenclature record
+  edit_nomenclature: Editing an nomenclature
+  original_entry: Original entry
+  selected_entry: Selected entry
+  waiting_filled: Waiting to be filled
+  analog_waiting_filled: Analog container waiting to be added
+  manufacturers_article: Manufacturer's article
+  unit_measurement: Unit of measurement
+  product_group: Product group
+  file: File
+  comment: Comment
+  create_container_analogs: Create a new container of analogs
+  analogs: Analogs
+  container_analogs: Container of analogues
+  product_type: Product type
+  nomenclature_type: Nomenclature type
+  item_type: Nomenclature type
+  nomenclature_class: Nomenclature class
+  ic: Implementation code
+  oem: OEM
+  add_product_type: Add. product type
+  name_suplr: Names of supplair
+  trademark: Trademark
+  nd: Name acc. to ND
+  сhange_class: Change class
+  double_check: Duplicate entry
+  accounting_nomenclature_cards: Accounting of nomenclature cards
+  supplied: Supplied
+  article: Article
+  company: Perimeter Company
+  accounting_waiting_filled_not_save: >-
+    To be able to add records to the item cards container, you must save at least one record from the analogues container
+  accounting_waiting_filled: Nomenclature card container waiting to be added
+  confirm_action: Confirm action
+  element_editing: Element editing
+  full_name: Full name
+  change_full_name: The previously entered name will be replaced with "{name}"
+  set: Set
+  model_article_typesize: Model/Article/Size
+  trademark_nd: Trademark/ND
+  doc_name: Document name
+  base_uom: Base unit of measure
+  uom_storage_balances: Unit of storage of balances
+  uom_reports: Unit of measurement for reports
+  localization_status: Localization status
+  classifiers: Classifiers
+  code: Code
+  form_validation_error: Form validation error
+  suplr_product_groups: Supplier product groups
+  weight_dimensions_special_conditions: Weight and dimensions and special conditions
+  inherited_analogs_container: Inherited from analogs container
+  enter_value: Enter value
+  mass: Mass
+  length: Length
+  width: Width
+  height: Height
+  oversized: Oversized
+  fcl: Full container load
+  external_certification: External certification
+  empty_list: List of elements is empty
+  confirm_chancge_all_analog_items: Change for all other analogs to the new value?
+  saving: Saving in progress

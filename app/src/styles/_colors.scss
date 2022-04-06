@@ -9,6 +9,7 @@ $yellow: #fbc54f;
 $orange: #ffa439;
 $red: #e35169;
 $brand-qvant: #03bbd2;
+$brand-sm: #ffa439;
 
 // Mixing colors
 $light-theme-tint: #fff;
@@ -31,6 +32,7 @@ $color-mapping: (
 	'warning': $orange,
 	'danger': $red,
 	'brand-qvant': $brand-qvant,
+	'brand-sm': $brand-sm,
 );
 
 // Suffix -> Percentage mapping (Percentage of main color)

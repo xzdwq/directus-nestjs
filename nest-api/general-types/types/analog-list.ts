@@ -10,10 +10,10 @@ export interface AnalogListType {
 	is_full_name: boolean;
 	primary: boolean;
 	ic: string;
-	add_name: string;
+	additional_options: string;
 	suplr: string | any;
 	suplr_list: never[];
-	class_id: string | any;
+	class: string | any;
 	class_list: any;
 	item_type: any;
 	item_type_list: string[];

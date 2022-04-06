@@ -31,7 +31,9 @@
 	"gitHead": "24621f3934dc77eb23441331040ed13c676ceffd",
 	"dependencies": {
 		"@quasar/extras": "1.13.5",
-		"quasar": "2.6.5"
+		"mosha-vue-toastify": "1.0.23",
+		"quasar": "2.6.5",
+		"uuid": "8.3.2"
 	},
 	"devDependencies": {
 		"@directus/docs": "9.8.0",
